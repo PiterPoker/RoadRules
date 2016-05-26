@@ -1,4 +1,5 @@
 ﻿using System;
+using Duke.Owin.VkontakteMiddleware;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
@@ -61,6 +62,13 @@ namespace RoadRules
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+
+            app.UseVkontakteAuthentication(new VkAuthenticationOptions
+            {
+                AppId = "5478423",
+                AppSecret = "W2A89vGcjVEQtWBuFhMY",
+                Scope = "email"
+            });
         }
     }
 }

@@ -3,38 +3,40 @@
     ViewBag.Title = "Регистрация";
 }
 
-<h2>@ViewBag.Title.</h2>
-
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
-{
-    @Html.AntiForgeryToken()
-    <h4>Создайте новую учетную запись.</h4>
-    <hr/>
-    @Html.ValidationSummary("", new {@class = "text-danger"})
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new {@class = "col-md-2 control-label"})
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new {@class = "form-control"})
+<div class="wrap-container registration-container">
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new {@class = "registration-form", role = "form"}))
+    {
+        @Html.AntiForgeryToken()
+        <h2 class="title">Создайте свою учетную запись</h2>
+        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+        <div class="fields">
+            <div class="relative-block input-block">
+                <label class="label input-label" for="email">
+                    <span><i class="fa fa-user"></i></span></label>
+                @Html.TextBoxFor(m => m.Email, new {@class = "input-field", id = "email", placeholder = "email"})
+                @Html.ValidationMessageFor(m => m.Email, "", new {@class = "text-danger"})
+            </div>
+            <div class="relative-block input-block">
+                <label class="label input-label" for="password">
+                    <span><i class="fa fa-key"></i></span>
+                </label>
+                @Html.PasswordFor(m => m.Password, new {@class = "input-field", id = "password", placeholder = "пароль"})
+                @Html.ValidationMessageFor(m => m.Password, "", new {@class = "text-danger"})
+            </div>
+            <div class="relative-block input-block">
+                <label class="label input-label" for="password-confirmed">
+                    <span><i class="fa fa-key"></i></span>
+                </label>
+                @Html.PasswordFor(m => m.ConfirmPassword, new {@class = "input-field", id = "password-confirmed", placeholder = "подтверждение пароля"})
+                @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new {@class = "text-danger"})
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new {@class = "col-md-2 control-label"})
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new {@class = "form-control"})
+        <div class="button-block">
+            <input class="button" type="submit" value="Зарегистрироваться">
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new {@class = "col-md-2 control-label"})
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new {@class = "form-control"})
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Регистрация"/>
-        </div>
-    </div>
-}
+        @Html.ActionLink("Войти, если уже есть учетная запись", "Login")
+    }
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="wrap-container index-container">
+    <header>
+        <div class="navigation">
+            <h2 class="title">Здравствуй, @User.Identity.GetUserName()!</h2>
+            <nav>
+                <ul>
+                    <li class="green">
+                        <a href="#">Тесты</a>
+                    </li>
+                    <li class="yellow">
+                        <a href="#">Пазлы</a>
+                    </li>
+                    <li class="red">
+                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm"}))
+                        {
+                            @Html.AntiForgeryToken()
+                            <a href="javascript:document.getElementById('logoutForm').submit()">Выход</a>
+                        }
+                    </li>
+                </ul>
+            </nav>
+            <a href="#">Дополнительная информация</a>
+        </div>
+    </header>
+</div>

@@ -50,12 +50,12 @@ namespace RoadRules.Models
 
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Не введен адрес электронной почты")]
         [Display(Name = "Адрес электронной почты")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Некорректно введено")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Не введен пароль")]
         [DataType(DataType.Password)]
         [Display(Name = "Пароль")]
         public string Password { get; set; }
@@ -66,13 +66,13 @@ namespace RoadRules.Models
 
     public class RegisterViewModel
     {
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "Не введен адрес электронной почты")]
+        [EmailAddress(ErrorMessage = "Некорректно введено")]
         [Display(Name = "Адрес электронной почты")]
         public string Email { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "Значение {0} должно содержать не менее {2} символов.", MinimumLength = 6)]
+        [Required(ErrorMessage = "Не введен пароль")]
+        [StringLength(100, ErrorMessage = "Должен содержать не менее {2} символов", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Пароль")]
         public string Password { get; set; }
@@ -80,7 +80,7 @@ namespace RoadRules.Models
         [DataType(DataType.Password)]
         [Display(Name = "Подтверждение пароля")]
         [System.ComponentModel.DataAnnotations.Compare("Password",
-            ErrorMessage = "Пароль и его подтверждение не совпадают.")]
+            ErrorMessage = "Пароль и подтверждение не совпадают")]
         public string ConfirmPassword { get; set; }
     }
 

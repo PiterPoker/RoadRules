@@ -15,7 +15,7 @@ namespace RoadRules
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                 "~/Scripts/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+            bundles.Add(new ScriptBundle("~/bundles/functions").Include(
                 "~/Scripts/functions.js",
                 "~/Scripts/respond.js"));
 
