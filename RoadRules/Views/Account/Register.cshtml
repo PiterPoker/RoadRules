@@ -17,6 +17,12 @@
                 @Html.ValidationMessageFor(m => m.Email, "", new {@class = "text-danger"})
             </div>
             <div class="relative-block input-block">
+                <label class="label input-label" for="name">
+                    <span><i class="fa fa-user"></i></span></label>
+                @Html.TextBoxFor(m => m.Name, new {@class = "input-field", id = "name", placeholder = "имя"})
+                @Html.ValidationMessageFor(m => m.Name, "", new {@class = "text-danger"})
+            </div>
+            <div class="relative-block input-block">
                 <label class="label input-label" for="password">
                     <span><i class="fa fa-key"></i></span>
                 </label>

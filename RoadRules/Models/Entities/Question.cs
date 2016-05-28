@@ -15,6 +15,8 @@ namespace RoadRules.Models.Entities
         public int Id { get; set; }
 
         public string Content { get; set; }
+        public byte[] ImageData { get; set; }
+        public string ImageType { get; set; }
         public double Points { get; set; }
         public int TestId { get; set; }
         public Test Test { get; set; }

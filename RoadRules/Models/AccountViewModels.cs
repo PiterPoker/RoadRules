@@ -71,6 +71,11 @@ namespace RoadRules.Models
         [Display(Name = "Адрес электронной почты")]
         public string Email { get; set; }
 
+        [Required(ErrorMessage = "Не введено имя")]
+        [StringLength(30, ErrorMessage = "Должен содержать не менее {2} символов", MinimumLength = 2)]
+        [Display(Name = "Имя")]
+        public string Name { get; set; }
+
         [Required(ErrorMessage = "Не введен пароль")]
         [StringLength(100, ErrorMessage = "Должен содержать не менее {2} символов", MinimumLength = 6)]
         [DataType(DataType.Password)]
